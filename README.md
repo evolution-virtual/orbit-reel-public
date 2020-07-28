@@ -2,7 +2,7 @@
 
 ### Installation
 
-Download the libary through this URL: https://orbitreelcdn.s3.amazonaws.com/stable/orbit-reel.js
+Reference or download the library on the CDN: https://orbitreelcdn.s3.amazonaws.com/stable/orbit-reel.js
 
 HTML:
 ```
