@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orbit Reel Preview</title>
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+
+        overflow-x: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ev-orbit-reel-root" style="width: 100vw; height: 100vh;"></div>
+  </body>
+  <script src="https://orbitreelcdn.s3.amazonaws.com/stable/orbit-reel.js"></script>
+  <script>
+    OrbitReel.generate(document.getElementById('ev-orbit-reel-root'), {
+      token: 'm11xzx5gneofgfzxsx847c5125qjj9gb',
+      contentLoader: 'globalHawk',
+      globalHawkToken: '1',
+      includeStatusFilter: true,
+      ghEndpoint: 'https://iv6cuqg6w1.execute-api.us-east-1.amazonaws.com/prod',
+      mode: 'units',
+      includeMoveInFilter: true,
+    });
+  </script>
+</html>

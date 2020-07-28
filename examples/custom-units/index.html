@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orbit Reel Preview</title>
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+
+        overflow-x: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ev-orbit-reel-root" style="width: 100vw; height: 100vh;"></div>
+  </body>
+  <script src="https://orbitreelcdn.s3.amazonaws.com/stable/orbit-reel.js"></script>
+  <script>
+    //Hardcoded, you'll probably be feeding this from an API
+    const units = [
+      {
+        id: 0,
+        name: '713',
+        bedrooms: 3,
+        bathrooms: 4,
+        isUnavailable: false,
+        floor: 5,
+        floorplanName: 'Ruby',
+        floorplanAssetsSrc: [
+          {
+            src:
+              'https://ursula.adminsage.com/img/files/144/Floorplans/5-1/B07-5-1.jpg',
+            type: 'image/jpeg',
+          },
+        ],
+        price: 795000,
+        interiorSquareFeet: 1024,
+        exteriorSquareFeet: 0,
+        gallery: [],
+        status: 'Available',
+        panoramaSrc: '',
+        buildingName: 'Fort Lauderdale',
+        buildingId: 1,
+      },
+      {
+        id: 1,
+        name: '711',
+        bedrooms: 3,
+        bathrooms: 4,
+        isUnavailable: false,
+        floor: 5,
+        floorplanName: 'Ruby',
+        floorplanAssetsSrc: [
+          {
+            src:
+              'https://ursula.adminsage.com/img/files/144/Floorplans/5-1/B03-5-1.jpg',
+            type: 'image/jpeg',
+          },
+        ],
+        price: 795000,
+        interiorSquareFeet: 1024,
+        exteriorSquareFeet: 0,
+        gallery: [],
+        status: 'Available',
+        panoramaSrc: '',
+        buildingName: 'Fort Lauderdale',
+        buildingId: 1,
+      },
+      {
+        id: 2,
+        name: '912',
+        bedrooms: 3,
+        bathrooms: 4,
+        isUnavailable: false,
+        floor: 5,
+        floorplanName: 'Ruby',
+        floorplanAssetsSrc: [
+          {
+            src:
+              'https://ursula.adminsage.com/img/files/144/Floorplans/5-1/B08-5-1.jpg',
+            type: 'image/jpeg',
+          },
+        ],
+        price: 795000,
+        interiorSquareFeet: 1024,
+        exteriorSquareFeet: 0,
+        gallery: [],
+        status: 'Available',
+        panoramaSrc: '',
+        buildingName: 'Fort Lauderdale',
+        buildingId: 1,
+      },
+    ];
+
+    OrbitReel.generate(document.getElementById('ev-orbit-reel-root'), {
+      token: '50569d88fa7f4ce9bb284b497fcf2029',
+      units,
+      contentLoader: 'custom',
+      includeStatusFilter: true,
+    });
+  </script>
+</html>
