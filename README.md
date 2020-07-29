@@ -71,6 +71,17 @@ A fully typed interface containing all current config variables:
 }
 ```
 
+Breakdown of Configuration Variables
+
+```
+export type IApplicationMode =
+  | 'units'
+  | 'amenities'
+  | 'gallery'
+  | 'siteMap'
+  | 'floors';
+```
+
 If you find that any of these config variables don't work as you expect, or there's behavior in the app that you'd like to configure more precisely, send us an email!
 
 ### Events
