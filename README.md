@@ -68,6 +68,30 @@ A fully typed interface containing all current config variables:
   units: CORE.Type.IUnit[];
   mode: CORE.Type.IApplicationMode;
   priceFormatter: (price: number) => string;
+   disableTransitions: boolean;
+  hideUnavailableUnitDetails: boolean;
+  translations: {
+    unitOverlayStatus: string;
+    unitOverlayPrice: string;
+    unitOverlayExteriorSize: string;
+    threeDUnitSearch: string;
+    buildingAmenities: string;
+    twoDUnitSearch: string;
+    filterUnitSearch: string;
+  };
+  unitOverlayFields: {
+    disableStatus: boolean;
+    disableBedrooms: boolean;
+    disableBathrooms: boolean;
+    disableAvailability: boolean;
+    disableExteriorSize: boolean;
+    disableInteriorSize: boolean;
+    disableTotalSquareFeet: boolean;
+    disablePricing: boolean;
+    disableView: boolean;
+  };
+  logoSrc: string;
+  watermarkSrc: string;
 }
 ```
 
