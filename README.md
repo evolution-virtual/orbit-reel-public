@@ -169,28 +169,9 @@ A reference to the reel object can be obtained through the constructor. There's 
 ### Reel
 ```
 class Reel {
-	onThetaChange:  (theta: number)  => void;
-	onLabelClicked:  (unit: IUnit)  => void;
-	onLabelEnter:  (unit: IUnit)  => void;
-	onLabelLeave:  (unit: IUnit)  => void;
-	onFloorClicked:  (floor: number)  => void;
-	onFloorEnter:  (floor: number)  => void;
-	onFloorLeave:  (floor: number)  => void;
-	onSetMousePosition:  (x: number, y: number)  => void;
-	onAmenityClicked:  (amenity: IClickableRegion)  => void;
-	onSitemapClosed:  ()  => void;
-	onTransitionEnded:  (src: string)  => void;
-	onModeChanged:  (mode: IApplicationMode)  => void;
-	dispose:  ()  => void;
 	addEventListener:  (type: ListenerTypes, listener:  (data: any)  => void)  => void;
 	removeEventListener:  (type: ListenerTypes, listener:  (data: any)  => void)  => void;
-	set  mode(mode: IApplicationMode);
-	load:  ()  => Promise<void>;
-	start:  ()  => void;
-	update:  ()  => void;
-	animate:  ()  => void;
-	initializeAnimation:  ()  => void;
-	set  onRenderPin(forwarder:  (forward: IPinForwardRender)  => void);
+	set mode(mode: IApplicationMode);
 	moveToReel:  (token: string, force?: boolean, viewAngle?: number)  => void;
 	handleSitemapTransition:  (viewAngle: number, communityToken: string)  => void;
 	playTransition:  (name: string, snap?: boolean)  => Promise<void>;
