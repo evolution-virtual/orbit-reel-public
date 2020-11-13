@@ -1,3 +1,4 @@
+
 # Orbit Reel
 
 ### Installation
@@ -23,6 +24,38 @@ OrbitReel.generate(document.getElementById('YOUR_CONTAINER_ROOT'), {
 });
 ```
 The library requires that both an container reference and an appropriate orbit reel token be passed in. The rest of the API surface layer is just optional config details.
+
+### Generation Type Signature
+```
+OrbitReel.generate(element: HTMLElement, config: IConfig, callback?: (reel: Reel, destructor: () => void))
+```
+
+### Manual Memory Cleanup and Direct Reel Control
+
+These are optional services that can be provided to your application. They can be obtained via callback through an optional third parameter passed to the OrbitReel.generate function. 
+
+For versions 0.56+, manual memory cleanup is only necessary if you decide to re-use the same DOM element. In any other case, simply `remove()` the DOM element you initially passed to the generate function, and the application will automatically dismount.
+
+An example showcasing:
+	-obtaining access to these optional services
+	-using reel direct access to add an event listener for clicked units
+	-manually disposing the app
+
+```
+const {dispose, reel} = await (function() {
+	return new Promise((resolve) => {
+		OrbitReel.generate(element, config, (reel,dispose) => {
+			resolve({dispose, reel});
+		});
+	});
+})();
+//...
+reel.addEventListener('unit-clicked', (unit) => console.log(`${unit.name} was clicked!`));
+//...
+dispose();
+```
+
+Full type signature for the Reel object is shown below.
 
 ### Config
 
@@ -124,13 +157,69 @@ A reference to the reel object can be obtained through the constructor. There's 
     
     OrbitReel.generate(container, 
         {token: 'YOUR_TOKEN', ...}
-        function(reel) {
+        function(reel, destructor) {
             //Reel is received here
             reel.addEventListener('unit-clicked', function(unit) {
                 alert(unit.name + 'was clicked!');
             }
         }
     )
+
+### Reel
+```
+class Reel {
+	onThetaChange:  (theta: number)  => void;
+	onLabelClicked:  (unit: IUnit)  => void;
+	onLabelEnter:  (unit: IUnit)  => void;
+	onLabelLeave:  (unit: IUnit)  => void;
+	onFloorClicked:  (floor: number)  => void;
+	onFloorEnter:  (floor: number)  => void;
+	onFloorLeave:  (floor: number)  => void;
+	onSetMousePosition:  (x: number, y: number)  => void;
+	onAmenityClicked:  (amenity: IClickableRegion)  => void;
+	onSitemapClosed:  ()  => void;
+	onTransitionEnded:  (src: string)  => void;
+	onModeChanged:  (mode: IApplicationMode)  => void;
+	dispose:  ()  => void;
+	addEventListener:  (type: ListenerTypes, listener:  (data: any)  => void)  => void;
+	removeEventListener:  (type: ListenerTypes, listener:  (data: any)  => void)  => void;
+	set  mode(mode: IApplicationMode);
+	load:  ()  => Promise<void>;
+	start:  ()  => void;
+	update:  ()  => void;
+	animate:  ()  => void;
+	initializeAnimation:  ()  => void;
+	set  onRenderPin(forwarder:  (forward: IPinForwardRender)  => void);
+	moveToReel:  (token: string, force?: boolean, viewAngle?: number)  => void;
+	handleSitemapTransition:  (viewAngle: number, communityToken: string)  => void;
+	playTransition:  (name: string, snap?: boolean)  => Promise<void>;
+	hoverUnit:  (unitName: string)  => void;
+	unhoverUnit:  (unitName: string)  => void;
+	resetReel:  ()  => void;
+	exitTransition:  ()  => void;
+	set  unitFilter(filter:  (unit: IUnit)  => boolean);
+	handleLabelClicked:  (unit: IUnit)  => void;
+	handleLabelEnter:  (unit: IUnit)  => void;
+	handleSetMousePosition:  (x: number, y: number)  => void;
+	handleLabelLeave:  (unit: IUnit)  => void;
+	handleFloorClicked:  (floor: number)  => void;
+	handleFloorEnter:  (floor: number)  => void;
+	handleFloorLeave:  (floor: number)  => void;
+	handleAmenityClicked:  (amenity: IClickableRegion)  => void;
+	get  zoom(): number;
+	set  zoom(zoom: number);
+	get  transitions(): ITransition[];
+	set  renderUnits(shouldRenderUnits: boolean);
+	set  renderAmenities(shouldRenderAmenities: boolean);
+	set  renderSitemap(shouldRenderSitemap: boolean);
+	set  renderFloors(shouldRenderFloors: boolean);
+	get  renderUnits(): boolean;
+	get  renderAmenities(): boolean;
+	get  renderSitemap(): boolean;
+	get  renderFloors(): boolean;
+}
+```
+
     
 ## Advanced Recipes
 
