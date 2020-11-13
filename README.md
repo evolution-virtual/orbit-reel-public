@@ -55,7 +55,8 @@ reel.addEventListener('unit-clicked', (unit) => console.log(`${unit.name} was cl
 dispose();
 ```
 
-Full type signature for the Reel object is shown below.
+Full type signature for the Reel object can be found [here](https://github.com/evolution-virtual/orbit-reel-public/blob/master/README.md#reel)
+
 
 ### Config
 
