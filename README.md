@@ -5,6 +5,8 @@
 
 Reference or download the library on the CDN: https://orbitreelcdn.s3.amazonaws.com/stable/orbit-reel.js
 
+Alternatively, you may have been given a customized turnkey script by your sales contact. Use that instead.
+
 HTML:
 ```
 <head>
